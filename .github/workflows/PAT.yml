@@ -1,0 +1,44 @@
+name: 解密PAT
+
+on:
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: 'Clear caches'
+        required: false
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 解密PAT
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: DS3622xs+
+            version: 7.1.0-42661
+
+    steps:
+      - name: 检出项目文件
+        uses: actions/checkout@v3
+      
+      - name: 解密PAT
+        run: |
+          mkdir -p /home/runner/PAT/
+          cd /home/runner/PAT
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/DS3622xs%2B_7.1.0_42661-1_UNPACK.sh -O PAT.sh
+          chmod +x PAT.sh
+          ./PAT.sh
+          
+	  - name: 上传Release
+	    uses: softprops/action-gh-release@v1
+	    with:
+	    	tag_name: UNPACK
+	    	name: Release UNPACK
+	    	body: TODO New Release.
+	    	draft: false
+	    	prerelease: false
+	    	files: |
+	    	  ds3622xsp_42661.pat
+	    	  LICENSE
