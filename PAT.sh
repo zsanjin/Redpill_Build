@@ -12,12 +12,11 @@ cp ../usr/lib/libcurl.so.4 ../usr/lib/libmbedcrypto.so.5 ../usr/lib/libmbedtls.s
 ln -s scemd syno_extract_system_patch
 cd ../..
 mkdir pat
-#tar xf ds.pat -C pat
 ls -lh ./
 sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
 cd pat
 tar -czvf archive.tar.gz ./ --warning=no-file-changed
 mv archive.tar.gz ../ds3622xsp_42661.pat
 cd ../
-rm -r ds.pat oldpat.tar.gz pat synoesp
+sudo rm -rf ds.pat oldpat.tar.gz pat synoesp
 sha256sum ds3622xsp_42661.pat
