@@ -23,7 +23,7 @@ jobs:
       - name: 检出项目文件
         uses: actions/checkout@v3
       
-      - name: 环境准备
+      - name: 编译引导
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
@@ -35,7 +35,7 @@ jobs:
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json'
           cd cache
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/PAT.sh -O /home/runner/redpill-load/PAT.sh
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/PAT.sh -O /home/runner/redpill-load/cache/PAT.sh
           chmod +x PAT.sh
           ./PAT.sh && rm PAT.sh
 
