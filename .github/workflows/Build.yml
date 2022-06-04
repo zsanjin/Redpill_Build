@@ -17,28 +17,35 @@ jobs:
       matrix:
         include:
           #  两行一组，删除不需要的版本
-          - platform: ds3622xsp
+          - platform: FS6400
             version: 7.1.0-42661
 
     steps:
       - name: 检出项目文件
         uses: actions/checkout@v3
+      
+      - name: 环境准备
+        run: | 
+          sudo apt update
+#          sudo apt upgrade -y
+          sudo apt install -y jq bspatch make gcc
 
       - name: 克隆镜像仓库
         run: |
           mkdir -p /home/runner/
-          git clone https://github.com/RedPill-TTG/redpill-load.git /home/runner/redpill-load
-          git clone https://github.com/RedPill-TTG/redpill-lkm.git /home/runner/redpill-lkm
-          ls -al /home/runner/
+          git clone https://github.com/Online24Hours/redpill-load.git /home/runner/redpill-load
+          ls -al /home/runner/redpill-load
+          ls -al /home/runner/redpill-load/ext/rp-lkm/
 
-      - name: 编译Kernel
+      - name: 编译
         run: |
-          cd /home/runner/redpill-lkm
-          ls -al
+          cd /home/runner/redpill-load
+          sudo bash ./build-loader.sh 'FS6400' '7.1.0-42261'
+          ls -al cache/
 
       - name: 上传引导镜像到 github actions
         uses: actions/upload-artifact@v3
         with:
           name: dsm-${{matrix.platform}}-${{matrix.version}}
-          path: images/redpill-*.img
+          path: cache/*
           if-no-files-found: error
