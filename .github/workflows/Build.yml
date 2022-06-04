@@ -49,7 +49,6 @@ jobs:
           ln -s scemd syno_extract_system_patch
           cd ../..
           mkdir pat
-          #tar xf ds.pat -C pat
           ls -lh ./
           sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
           cd pat
