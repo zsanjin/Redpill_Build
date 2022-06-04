@@ -33,7 +33,7 @@ jobs:
 
       - name: 编译Kernel
         run: |
-          cd /root/redpill-lkm
+          sudo cd /root/redpill-lkm
           sudo ls -al
 
       - name: 上传引导镜像到 github actions
