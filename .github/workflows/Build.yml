@@ -26,16 +26,15 @@ jobs:
 
       - name: 克隆镜像仓库
         run: |
-          sudo -i
-          mkdir -p /root/
-          git clone https://github.com/RedPill-TTG/redpill-load.git /root/redpill-load
-          git clone https://github.com/RedPill-TTG/redpill-lkm.git /root/redpill-lkm
-          ls -al $path/
+          sudo mkdir -p /root/
+          sudo git clone https://github.com/RedPill-TTG/redpill-load.git /root/redpill-load
+          sudo git clone https://github.com/RedPill-TTG/redpill-lkm.git /root/redpill-lkm
+          sudo ls -al /root/
 
       - name: 编译Kernel
         run: |
           cd /root/redpill-lkm
-          ls -al
+          sudo ls -al
 
       - name: 上传引导镜像到 github actions
         uses: actions/upload-artifact@v3
