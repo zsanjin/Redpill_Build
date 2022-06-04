@@ -42,7 +42,8 @@ jobs:
       - name: 编译
         run: |
           cd /home/runner/redpill-load
-          sudo bash ./build-loader.sh 'DS3622xs+' '7.1.0-42261'
+          chmod +x ./build-loader.sh
+          ./build-loader.sh 'DS3622xs+' '7.1.0-42261'
           ls -al cache/
 
       - name: 上传引导镜像到 github actions
