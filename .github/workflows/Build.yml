@@ -44,7 +44,7 @@ jobs:
           export TERM=vt100
           cd /home/runner/redpill-load
           chmod +x ./build-loader.sh
-          sudo ./build-loader.sh 'DS3622xs+' '7.1.0-42261'
+          sudo ./build-loader.sh 'DS3622xs+' '7.1.0-42661'
           ls -al cache/
 
       - name: 上传引导镜像到 github actions
