@@ -35,7 +35,7 @@ jobs:
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json'
           cd /home/runner/redpill-load
-          BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622xs+' '7.1.0-42218'
+          BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622xs+' '7.1.0-42661'
           
       - name: 上传引导镜像到 github actions
         uses: actions/upload-artifact@v3
