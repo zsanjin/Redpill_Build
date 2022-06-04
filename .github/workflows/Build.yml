@@ -43,7 +43,7 @@ jobs:
           
       - name: 编译
         run: |
-          sudo -i && BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622+' '7.1.0-42661'
+          sudo -i && cd cd /home/runner/redpill-load && BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622+' '7.1.0-42661'
           
       - name: 上传引导镜像到 github actions
         uses: actions/upload-artifact@v3
