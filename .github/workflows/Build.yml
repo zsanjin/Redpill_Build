@@ -1,0 +1,51 @@
+name: 引导构建
+
+on:
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: 'Clear caches'
+        required: false
+        type: boolean
+  push:
+    branches:
+      - master
+    paths:
+      - "docker/**"
+      - "**.sh"
+      - "**.json"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 编译 "${{matrix.platform}} ${{matrix.version}}"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          #  两行一组，删除不需要的版本
+          - platform: ds3622xsp
+            version: 7.1.0-42661
+
+    steps:
+      - name: 检出项目文件
+        uses: actions/checkout@v3
+
+      - name: 克隆镜像仓库
+        run: |
+          $path = $(bash pwd)
+          git clone https://github.com/RedPill-TTG/redpill-load.git $path/redpill-load
+          git clone https://github.com/RedPill-TTG/redpill-lkm.git $path/redpill-lkm
+          ls -al $path/
+
+      - name: 编译Kernel
+        run: |
+          cd $path/redpill-lkm
+          ls -al
+
+      - name: 上传引导镜像到 github actions
+        uses: actions/upload-artifact@v3
+        with:
+          name: dsm-${{matrix.platform}}-${{matrix.version}}
+          path: images/redpill-*.img
+          if-no-files-found: error
