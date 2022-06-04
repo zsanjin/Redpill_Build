@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          #  两行一组，删除不需要的版本
           - platform: DS3622xs+
             version: 7.1.0-42661
 
@@ -25,32 +24,30 @@ jobs:
         uses: actions/checkout@v3
       
       - name: 环境准备
-        run: | 
+        run: |
           sudo apt update
-          sudo apt upgrade -y
-          sudo apt install -y jq bspatch make gcc
+          sudo apt-get install -y curl bspatch jq git
 
       - name: 克隆镜像仓库
         run: |
-          mkdir -p /home/runner/
           git clone https://github.com/Online24Hours/redpill-load.git /home/runner/redpill-load
-          wget https://cndl.synology.cn/download/DSM/release/7.1/42661-1/DSM_DS3622xs%2B_42661.pat -O /home/runner/redpill-load/cache/ds3622xsp_42661.pat
-          ls -al /home/runner/redpill-load
-          ls -al /home/runner/redpill-load/ext/rp-lkm/
-          ls -al /home/runner/redpill-load/config/
-          ls -al /home/runner/redpill-load/config/DS3622xs+/
 
+      - name: 添加驱动
+        run: |
+          cd /home/runner/redpill-load
+          ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
+          ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
+          ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json'
+          
       - name: 编译
         run: |
-          export TERM=vt100
-          cd /home/runner/redpill-load
-          chmod +x ./build-loader.sh
-          sudo ./build-loader.sh 'DS3622xs+' '7.1.0-42661'
-          ls -al cache/
-
+          sudo -i && BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622+' '7.1.0-42661'
+          
       - name: 上传引导镜像到 github actions
         uses: actions/upload-artifact@v3
         with:
           name: dsm-${{matrix.platform}}-${{matrix.version}}
-          path: cache/*
+          path: images/*
           if-no-files-found: error
