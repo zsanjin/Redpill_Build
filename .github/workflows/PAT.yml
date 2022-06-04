@@ -31,14 +31,14 @@ jobs:
           chmod +x PAT.sh
           ./PAT.sh
           
-	  - name: 上传Release
-	    uses: softprops/action-gh-release@v1
-	    with:
-	    	tag_name: UNPACK
-	    	name: Release UNPACK
-	    	body: TODO New Release.
-	    	draft: false
-	    	prerelease: false
-	    	files: |
-	    	  ds3622xsp_42661.pat
-	    	  LICENSE
+      - name: 上传Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: UNPACK
+          name: Release UNPACK
+          body: TODO New Release.
+          draft: false
+          prerelease: false
+          files: |
+            ds3622xsp_42661.pat
+            LICENSE
