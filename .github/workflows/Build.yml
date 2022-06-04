@@ -27,7 +27,6 @@ jobs:
       - name: 环境准备
         run: | 
           sudo apt update
-#          sudo apt upgrade -y
           sudo apt install -y jq bspatch make gcc
 
       - name: 克隆镜像仓库
