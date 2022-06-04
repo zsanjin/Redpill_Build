@@ -7,13 +7,6 @@ on:
         description: 'Clear caches'
         required: false
         type: boolean
-  push:
-    branches:
-      - master
-    paths:
-      - "docker/**"
-      - "**.sh"
-      - "**.json"
 
 jobs:
   build:
@@ -33,14 +26,15 @@ jobs:
 
       - name: 克隆镜像仓库
         run: |
-          $path = $(bash pwd)
-          git clone https://github.com/RedPill-TTG/redpill-load.git $path/redpill-load
-          git clone https://github.com/RedPill-TTG/redpill-lkm.git $path/redpill-lkm
+          sudo -i
+          mkdir -p /root/
+          git clone https://github.com/RedPill-TTG/redpill-load.git /root/redpill-load
+          git clone https://github.com/RedPill-TTG/redpill-lkm.git /root/redpill-lkm
           ls -al $path/
 
       - name: 编译Kernel
         run: |
-          cd $path/redpill-lkm
+          cd /root/redpill-lkm
           ls -al
 
       - name: 上传引导镜像到 github actions
