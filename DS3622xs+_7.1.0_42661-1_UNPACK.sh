@@ -1,5 +1,3 @@
-mkdir -p /home/runner/PAT/
-cd /home/runner/PAT
 curl -L https://cndl.synology.cn/download/DSM/release/7.1/42661-1/DSM_DS3622xs+_42661.pat -o ds.pat
 mkdir synoesp
 curl --location https://cndl.synology.cn/download/DSM/release/7.0.1/42218/DSM_DS3622xs+_42218.pat --output oldpat.tar.gz
