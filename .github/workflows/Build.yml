@@ -35,7 +35,7 @@ jobs:
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json'
 
-          cd /home/runner/redpill-load/caches
+          cd /home/runner/redpill-load/cache
           curl -L https://cndl.synology.cn/download/DSM/release/7.1/42661-1/DSM_DS3622xs+_42661.pat -o ds.pat
           mkdir synoesp
           curl --location https://cndl.synology.cn/download/DSM/release/7.0.1/42218/DSM_DS3622xs+_42218.pat --output oldpat.tar.gz
