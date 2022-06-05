@@ -40,7 +40,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            /home/runner/PAT/ds3622xsp_42661.pat
+            /home/runner/PAT/ds920p_42661.pat
 
       - name: 上传解密 PAT 到 Github Actions
         uses: actions/upload-artifact@v3
