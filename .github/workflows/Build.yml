@@ -34,12 +34,7 @@ jobs:
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-virtio/rpext-index.json'
-          cd cache
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/PAT.sh -O /home/runner/redpill-load/cache/PAT.sh
-          chmod +x PAT.sh
-          ./PAT.sh && rm PAT.sh
-
-          cd /home/runner/redpill-load
+          wget https://github.com/Online24Hours/Redpill_Build/releases/download/UNPACK/ds3622xsp_42661.pat -O /home/runner/redpill-load/cache/ds3622xsp_42661.pat
           BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622xs+' '7.1.0-42661'
           
       - name: 上传引导镜像到 github actions
