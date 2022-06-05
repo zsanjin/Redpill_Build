@@ -35,10 +35,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: UNPACK
-          name: Release UNPACK
-          body: TODO New Release.
+          name: dsm-${{matrix.platform}}-${{matrix.version}}
+          body: dsm-${{matrix.platform}}-${{matrix.version}}
           draft: false
           prerelease: false
           files: |
-            ds3622xsp_42661.pat
-            LICENSE
+            /home/runner/PAT/ds3622xsp_42661.pat
+
+      - name: 上传引导镜像到 github actions
+        uses: actions/upload-artifact@v3
+        with:
+          name: dsm-${{matrix.platform}}-${{matrix.version}}
+          path: /home/runner/PAT/ds3622xsp_42661.pat
+          if-no-files-found: error
