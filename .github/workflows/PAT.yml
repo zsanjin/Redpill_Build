@@ -23,7 +23,7 @@ jobs:
       - name: 检出项目文件
         uses: actions/checkout@v3
       
-      - name: 解密PAT
+      - name: 解密PAT文件
         run: |
           mkdir -p /home/runner/PAT/
           cd /home/runner/PAT
