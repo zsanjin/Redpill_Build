@@ -11,12 +11,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: 解密PAT
+    name: dsm-${{matrix.platform}}-${{matrix.version}}
     strategy:
       fail-fast: false
       matrix:
         include:
-          - platform: DS3622xs+
+          - platform: DS920+
             version: 7.1.0-42661
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p /home/runner/PAT/
           cd /home/runner/PAT
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/DS3622xs%2B_7.1.0_42661-1_UNPACK.sh -O PAT.sh
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/920.sh -O PAT.sh
           chmod +x PAT.sh
           ./PAT.sh
           
