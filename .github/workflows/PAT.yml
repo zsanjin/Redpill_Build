@@ -31,7 +31,7 @@ jobs:
           chmod +x PAT.sh
           ./PAT.sh
           
-      - name: 上传Release
+      - name: 上传解密 PAT 到 Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: UNPACK
@@ -42,7 +42,7 @@ jobs:
           files: |
             /home/runner/PAT/ds3622xsp_42661.pat
 
-      - name: 上传引导镜像到 github actions
+      - name: 上传解密 PAT 到 Github Actions
         uses: actions/upload-artifact@v3
         with:
           name: dsm-${{matrix.platform}}-${{matrix.version}}
