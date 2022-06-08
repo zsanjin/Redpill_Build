@@ -12,7 +12,10 @@
 	"netif_num": 8
     },
 	"synoinfo": {
-	"maxlanport": "8"
+	"maxlanport": "8",
+	"esataportcfg": "0xff000",
+	"internalportcfg": "0xfff",
+	"maxdisks": "16"
     },
 	"ramdisk_copy": {},
 	"extensions": []
