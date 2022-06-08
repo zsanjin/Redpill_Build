@@ -15,7 +15,7 @@
 	"maxlanport": "8",
 	"esataportcfg": "0xff000",
 	"internalportcfg": "0xfff",
-	"maxdisks": "36"
+	"maxdisks": "16"
     },
 	"ramdisk_copy": {},
 	"extensions": []
