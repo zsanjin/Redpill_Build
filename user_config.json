@@ -3,16 +3,19 @@
         "pid": "0x0001",
         "vid": "0x46f4",
         "sn": "20C0SQRTFLJ7M",
-        "mac1": "0011327B991A",
-	"mac2": "0011327B991B",
-	"mac3": "0011327B991C",
-	"mac4": "0011327B991D",
-	"mac5": "0011327B991E",
-	"mac6": "0011327B991F",
+        "mac1": "0011327B992A",
+	"mac2": "0011327B992B",
+	"mac3": "0011327B992C",
+	"mac4": "0011327B992D",
+	"mac5": "0011327B992E",
+	"mac6": "0011327B992F",
 	"netif_num": 8
     },
 	"synoinfo": {
-	"maxlanport": "8"
+	"maxlanport": "8",
+	"esataportcfg": "0xff000",
+	"internalportcfg": "0xfff",
+	"maxdisks": "32"
     },
 	"ramdisk_copy": {},
 	"extensions": []
