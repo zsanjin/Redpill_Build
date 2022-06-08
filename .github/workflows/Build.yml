@@ -51,7 +51,7 @@ jobs:
         with:
           tag_name: Synoboot
           name: Synoboot Build ${{steps.date.outputs.today}}
-          body: DSM 7.0.1-42218（可升级 7.1.0-42661 Update2）
+          body: DSM 7.0.1-42218（可升级 7.1.0-42661 Update2）【驱动：redpill-misc、redpill-acpid、vmxnet3、tg3(BCM5720)】
           draft: false
           prerelease: false
           files: |
