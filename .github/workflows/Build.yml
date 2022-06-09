@@ -33,7 +33,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
-          git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
+          git clone https://github.com/Online24Hours/redpill-load.git /home/runner/redpill-load
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/user_config.json -O /home/runner/redpill-load/user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-broadwellnk.tgz
           tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
@@ -42,13 +42,12 @@ jobs:
           mkdir -p '/home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/'
           cd /home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/
           wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/config.json'
-          wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/zImage-001-DS3622xs%2B-42661-ramdisk-and-header.bsp'
+          wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/zImage-001-DS3622xs+-42661-ramdisk-and-header.bsp'
           cd /home/runner/redpill-load 
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
-          ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/redpill-boot-wait/rpext-index.json'
           sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
           
       - name: 上传引导镜像到 Release
