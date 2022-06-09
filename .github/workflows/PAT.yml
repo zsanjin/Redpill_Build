@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p /home/runner/PAT/
           cd /home/runner/PAT
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/920.sh -O PAT.sh
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/3622.sh -O PAT.sh
           chmod +x PAT.sh
           ./PAT.sh
           
@@ -35,16 +35,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: UNPACK
-          name: dsm-${{matrix.platform}}-${{matrix.version}}
-          body: dsm-${{matrix.platform}}-${{matrix.version}}
+          name: PAT_Patch
+          body: PAT_Patch
           draft: false
           prerelease: false
           files: |
-            /home/runner/PAT/ds920p_42661.pat
+            /home/runner/PAT/*.pat
 
       - name: 上传解密 PAT 到 Github Actions
         uses: actions/upload-artifact@v3
         with:
-          name: dsm-${{matrix.platform}}-${{matrix.version}}
-          path: /home/runner/PAT/ds3622xsp_42661.pat
+          name: PAT_Patch
+          path: /home/runner/PAT/*.pat
           if-no-files-found: error
