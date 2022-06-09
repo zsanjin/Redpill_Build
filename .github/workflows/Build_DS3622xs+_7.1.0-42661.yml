@@ -28,25 +28,43 @@ jobs:
       - name: 获取当前时间
         id: date
         run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
-      
-      - name: 编译引导
+        
+      - name: 环境准备
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
           git clone https://github.com/dogodefi/redpill-load.git /home/runner/redpill-load
-          sudo rm -rf '/home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/config.json'
-          wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/config.json' -O '/home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/config.json'
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/user_config.json -O /home/runner/redpill-load/user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-broadwellnk.tgz
           tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
-          ls -al
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
+          
+      - name: 解密PAT文件
+        run: |
+          mkdir -p /home/runner/PAT_Patch/
+          cd /home/runner/PAT_Patch/
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/${{matrix.platform}}_${{matrix.version}}.sh -O PAT_Patch.sh
+          chmod +x PAT_Patch.sh
+          ./PAT_Patch.sh
+          mv /home/runner/PAT/*.pat /home/runner/redpill-load/cache/
+      
+      - name: 修改配置
+        run: |
+          sha256sum /home/runner/redpill-load/cache/* > /home/runner/redpill-load/check.sha256
+          sed -i s/os_sha256/$(awk '{print $1}' "/home/runner/redpill-load/check.sha256")/g /home/runner/redpill-load/config/'${{matrix.platform}}'/'${{matrix.version}}'/config.json
+          cat /home/runner/redpill-load/config/'${{matrix.platform}}'/'${{matrix.version}}'/config.json
+          
+      - name: 添加扩展驱动
+        run: |
           cd /home/runner/redpill-load 
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
-          wget https://github.com/Online24Hours/Redpill_Build/releases/download/UNPACK/ds3622xsp_42661.pat -O /home/runner/redpill-load/cache/ds3622xsp_42661.pat
+          
+      - name: 编译引导
+        run: |
+          cd /home/runner/redpill-load
           sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
           
       - name: 上传引导镜像到 Release
