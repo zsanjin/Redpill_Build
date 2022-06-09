@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: DS920+
+          - platform: DS3622xs+
             version: 7.1.0-42661
 
     steps:
@@ -39,8 +39,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: UNPACK
-          name: PAT_Patch
-          body: PAT_Patch
+          name: PAT_Patch ${{steps.date.outputs.today}}
+          body: PAT_Patch ${{matrix.}}
           draft: false
           prerelease: false
           files: |
