@@ -46,7 +46,7 @@ jobs:
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/${{matrix.platform}}_${{matrix.version}}.sh -O PAT_Patch.sh
           chmod +x PAT_Patch.sh
           ./PAT_Patch.sh
-          mv /home/runner/PAT/*.pat /home/runner/redpill-load/cache/
+          mv /home/runner/PAT_Patch/*.pat /home/runner/redpill-load/cache/
       
       - name: 修改配置
         run: |
