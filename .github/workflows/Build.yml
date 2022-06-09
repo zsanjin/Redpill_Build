@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - platform: DS3622xs+
-            version: 7.0.1-42218
+            version: 7.1.0-42661
 
     steps:
       - name: 检出项目文件
@@ -39,19 +39,23 @@ jobs:
           tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
           ls -al
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
+          mkdir -p '/home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/'
+          cd /home/runner/redpill-load/config/DS3622xs+/7.1.0-42661/
+          wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/config.json'
+          wget 'https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/DS3622xs+/7.1.0-42661/zImage-001-DS3622xs%2B-42661-ramdisk-and-header.bsp'
           cd /home/runner/redpill-load 
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/tg3/rpext-index.json'
-          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh 'DS3622xs+' '7.0.1-42218'
+          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
           
       - name: 上传引导镜像到 Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: Synoboot
           name: Synoboot Build ${{steps.date.outputs.today}}
-          body: DSM 7.0.1-42218（可升级 7.1.0-42661 Update2）【驱动：redpill-misc、redpill-acpid、vmxnet3、tg3(BCM5720)】
+          body: DSM ${{matrix.version}}
           draft: false
           prerelease: false
           files: |
@@ -60,6 +64,6 @@ jobs:
       - name: 上传引导镜像到 Github Actions
         uses: actions/upload-artifact@v3
         with:
-          name: dsm-${{matrix.platform}}-${{matrix.version}}
+          name: ${{matrix.platform}} ${{matrix.version}}
           path: /home/runner/redpill-load/images/*.img
           if-no-files-found: error
