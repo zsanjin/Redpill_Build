@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p /home/runner/PAT/
           cd /home/runner/PAT
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/3622.sh -O PAT.sh
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/${{matrix.platform}}-${{matrix.version}}.sh -O PAT.sh
           chmod +x PAT.sh
           ./PAT.sh
           
@@ -40,7 +40,7 @@ jobs:
         with:
           tag_name: UNPACK
           name: PAT_Patch ${{steps.date.outputs.today}}
-          body: PAT_Patch ${{matrix.}}
+          body: PAT_Patch ${{matrix.platform}} ${{matrix.version}}
           draft: false
           prerelease: false
           files: |
