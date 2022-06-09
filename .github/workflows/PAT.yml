@@ -22,6 +22,10 @@ jobs:
     steps:
       - name: 检出项目文件
         uses: actions/checkout@v3
+        
+      - name: 获取当前时间
+        id: date
+        run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
       
       - name: 解密PAT文件
         run: |
