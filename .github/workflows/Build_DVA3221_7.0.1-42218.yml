@@ -37,7 +37,7 @@ jobs:
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/dva3221_user_config.json -O /home/runner/redpill-load/dva3221_user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/master/redpill/releases/redpill-4.4.180plus-denverton.tgz
           tar zxvf redpill-4.4.180plus-denverton.tgz -C ./
-          mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180.ko
+          mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
           
       - name: 添加扩展驱动
         run: |
