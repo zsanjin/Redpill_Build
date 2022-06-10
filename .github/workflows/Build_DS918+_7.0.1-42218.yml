@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: DS2422+
+          - platform: DS918+
             version: 7.0.1-42218
 
     steps:
@@ -34,7 +34,7 @@ jobs:
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
           git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds2422p_user_config.json -O /home/runner/redpill-load/ds2422p_user_config.json
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds918p_user_config.json -O /home/runner/redpill-load/ds918p_user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-v1000.tgz
           tar zxvf redpill-4.4.180plus-v1000.tgz -C ./
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
@@ -44,11 +44,12 @@ jobs:
           cd /home/runner/redpill-load 
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
+          ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
           
       - name: 编译引导
         run: |
           cd /home/runner/redpill-load
-          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=ds2422p_user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
+          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=ds918p_user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
           
       - name: 上传引导镜像到 Github Releases
         uses: softprops/action-gh-release@v1
