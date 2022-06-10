@@ -1,4 +1,4 @@
-name: Build FS6400
+name: Build RS4021xs+
 
 on:
   schedule:
