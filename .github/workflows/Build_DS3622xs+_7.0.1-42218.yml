@@ -1,4 +1,4 @@
-name: 引导构建
+name: Build DS3622xs+
 
 on:
   schedule:
