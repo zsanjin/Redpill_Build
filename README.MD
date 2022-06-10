@@ -1,1 +1,1 @@
-DSM 7.0.1-42218 （支持升级 7.1.0-42661 Update2）<br>==================================<br>仓库自带驱动：virtio、boot-wait（默认）<br>DS3622xs+驱动：acpid、msic、tg3（BCM5720）<br>DVA3221驱动：acpid、vmxnet3<br>DS2422+驱动：acpid、msic（AMD处理器）<br>DS1621+：acpid、msic、vmxnet3（AMD处理器）<br>其他引导添加驱动：acpid、msic、vmxnet3
+DSM 7.0.1-42218 （支持升级 7.1.0-42661 Update2）<br>==================================<br>仓库自带驱动：virtio、boot-wait（默认）<br>DS3622xs+驱动：acpid、msic、tg3（BCM5720）<br>DVA3221驱动：acpid、vmxnet3<br>DS2422+驱动：acpid、msic（AMD处理器）<br>DS1621+驱动：acpid、msic、vmxnet3（AMD处理器）<br>其他引导添加驱动：acpid、msic、vmxnet3
