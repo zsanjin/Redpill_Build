@@ -1,4 +1,4 @@
-name: Build RS4021xs+
+name: Build DS2422+
 
 on:
   schedule:
@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: RS4021xs+
+          - platform: DS2422+
             version: 7.0.1-42218
 
     steps:
@@ -33,22 +33,22 @@ jobs:
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
-          git clone https://github.com/dogodefi/redpill-load.git /home/runner/redpill-load
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/rs4021xsp_user_config.json -O /home/runner/redpill-load/rs4021xsp_user_config.json
-          wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-broadwellnk.tgz
-          tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
+          git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds2422p_user_config.json -O /home/runner/redpill-load/ds2422p_user_config.json
+          wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-v1000.tgz
+          tar zxvf redpill-4.4.180plus-v1000.tgz -C ./
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
           
-      - name: 修改PAT校验值
+      - name: 添加扩展驱动
         run: |
-          sed -i s/a72076b1a5c148e775e9542916e2f07fe18d8676dc7396ed69355a9a0a38b36c/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g '/home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json'
-          sed -i s/17607e1739c8acc9903272ebd981bccb27b51057cdcb3cc446e5c5149db452d3/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/g '/home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json'
-          sed -i s/3aa9d810064747fca6d0a3ab4c979bd82b49fc0d166dfe714261c2a22145cc70/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/g '/home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json'
+          cd /home/runner/redpill-load 
+          ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           
       - name: 编译引导
         run: |
           cd /home/runner/redpill-load
-          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=rs4021xsp_user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
+          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=ds2422p_user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
           
       - name: 上传引导镜像到 Github Releases
         uses: softprops/action-gh-release@v1
