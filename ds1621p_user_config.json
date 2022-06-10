@@ -2,11 +2,11 @@
     "extra_cmdline": {
         "pid": "0x0001",
         "vid": "0x46f4",
-        "sn": "2030SJRS77RHV",
-        "mac1": "001132B76CFA",
-	"mac2": "001132B76CFB",
-	"mac3": "001132B76CFC",
-	"mac4": "001132B76CFD",
+        "sn": "2080S7RE6B55K",
+        "mac1": "001132C97DDA",
+	"mac2": "001132C97DDB",
+	"mac3": "001132C97DDC",
+	"mac4": "001132C97DDD",
 	"netif_num": 8
     },
 	"synoinfo": {
