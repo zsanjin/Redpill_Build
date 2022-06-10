@@ -39,9 +39,9 @@ jobs:
           tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
           
-      - name: 添加扩展驱动
+      - name: 修改PAT校验值
         run: |
-          echo "暂无"
+          sed -i s/a72076b1a5c148e775e9542916e2f07fe18d8676dc7396ed69355a9a0a38b36c/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g '/home/runner/redpill-load/${{matrix.platform}}/${{matrix.version}}/config.json'
           
       - name: 编译引导
         run: |
