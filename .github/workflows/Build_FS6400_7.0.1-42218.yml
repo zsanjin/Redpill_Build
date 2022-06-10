@@ -1,4 +1,4 @@
-name: 引导构建 FS6400
+name: Build FS6400
 
 on:
   schedule:
