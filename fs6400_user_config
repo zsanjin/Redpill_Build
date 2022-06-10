@@ -1,0 +1,17 @@
+{
+    "extra_cmdline": {
+        "pid": "0x0001",
+        "vid": "0x46f4",
+        "sn": "2030SQRVLHLZK",
+        "mac1": "0011329F66BA",
+	"mac2": "0011329F66BB",
+	"mac3": "0011329F66BC",
+	"mac4": "0011329F66BD",
+	"netif_num": 8
+    },
+	"synoinfo": {
+	"maxlanport": "8"
+    },
+	"ramdisk_copy": {},
+	"extensions": []
+}
