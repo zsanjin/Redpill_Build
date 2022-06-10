@@ -61,7 +61,7 @@ jobs:
         with:
           tag_name: Synoboot
           name: Synoboot Build ${{steps.date.outputs.today}}
-          body: DSM ${{matrix.version}} "（支持升级 7.1.0-42661 Update2）<br>仓库自带驱动：virtio、boot-wait<br>DS3622xs+添加驱动：acpid、msic、tg3<br>其他引导添加驱动：acpid、msic、vmxnet3"
+          body: DSM ${{matrix.version}} （支持升级 7.1.0-42661 Update2）<br>仓库自带驱动：virtio、boot-wait<br>DS3622xs+添加驱动：acpid、msic、tg3<br>其他引导添加驱动：acpid、msic、vmxnet3<br>DVA3221删除驱动：msic
           draft: false
           prerelease: false
           files: |
