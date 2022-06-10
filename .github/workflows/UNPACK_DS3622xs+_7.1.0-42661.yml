@@ -1,4 +1,4 @@
-name: 解密 DS3622xs+ 7.1.0-42661
+name: UNPACK 7.1.0-42661
 
 on:
   workflow_dispatch:
