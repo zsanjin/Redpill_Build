@@ -33,7 +33,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
-          git clone https://github.com/dogodefi/redpill-load.git /home/runner/redpill-load
+          git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds1621p_user_config.json -O /home/runner/redpill-load/ds1621p_user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/master/redpill/releases/redpill-4.4.180plus-v1000.tgz
           tar zxvf redpill-4.4.180plus-v1000.tgz -C ./
