@@ -48,6 +48,7 @@ jobs:
           
       - name: 删除扩展驱动
         run: |
+          cd /home/runner/redpill-load 
           ./ext-manager.sh remove 'jumkey.acpid2'
           ./ext-manager.sh remove 'jumkey.misc'
           sudo rm -rf /home/runner/redpill-load/redpill-acpid
