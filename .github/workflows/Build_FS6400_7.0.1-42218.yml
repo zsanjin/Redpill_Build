@@ -45,6 +45,9 @@ jobs:
           ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
+          
+      - name: 删除扩展驱动
+        run: |
           ./ext-manager.sh remove 'jumkey.acpid2'
           ./ext-manager.sh remove 'jumkey.misc'
           sudo rm -rf /home/runner/redpill-load/redpill-acpid
