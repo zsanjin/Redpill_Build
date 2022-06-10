@@ -39,6 +39,12 @@ jobs:
           tar zxvf redpill-4.4.180plus-v1000.tgz -C ./
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
           
+      - name: 添加扩展驱动
+        run: |
+          cd /home/runner/redpill-load 
+          ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
+          
       - name: 编译引导
         run: |
           cd /home/runner/redpill-load
@@ -49,7 +55,7 @@ jobs:
         with:
           tag_name: Synoboot
           name: Synoboot Build ${{steps.date.outputs.today}}
-          body: DSM ${{matrix.version}} （支持升级 7.1.0-42661 Update2）<br>仓库自带驱动：virtio、boot-wait<br>DS3622xs+添加驱动：acpid、msic、tg3<br>其他引导添加驱动：acpid、msic、vmxnet3<br>DVA3221删除驱动：msic（AMD处理器）<br>DS2422+：无驱动（AMD处理器）
+          body: DSM ${{matrix.version}} （支持升级 7.1.0-42661 Update2）<br>仓库自带驱动：virtio、boot-wait<br>DS3622xs+添加驱动：acpid、msic、tg3<br>其他引导添加驱动：acpid、msic、vmxnet3<br>DVA3221删除驱动：msic（AMD处理器）<br>DS2422+：无驱动vmxnet3（AMD处理器）
           draft: false
           prerelease: false
           files: |
