@@ -44,6 +44,8 @@ jobs:
           wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-4.4.180plus-broadwellnk.tgz
           tar zxvf redpill-4.4.180plus-broadwellnk.tgz -C ./
           mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v4.4.180+.ko
+          rm -rf /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/ds3622xsp_config.json -O /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
           
       - name: 解密PAT文件
         run: |
