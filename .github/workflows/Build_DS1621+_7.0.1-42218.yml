@@ -68,7 +68,6 @@ jobs:
           files: |
             /home/runner/redpill-load/images/*.img
           
-
 #      - name: 上传引导镜像到 Github Actions
 #        uses: actions/upload-artifact@v3
 #        with:
