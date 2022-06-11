@@ -38,7 +38,7 @@
 		"support_disk_compatibility": "no",
 		"internalportcfg": "0xfffff",
         "SasIdxMap": "0",
-        "esataportcfg": "0x00",
+        "esataportcfg": "0x00"
     },
     "grub": {
         "template": "@@@COMMON@@@/grub-template.conf",
