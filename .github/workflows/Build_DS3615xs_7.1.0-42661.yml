@@ -1,4 +1,4 @@
-name: Build DS3615xs
+name: Build DS3615xs 7.0.1-42218
 
 on:
   schedule:
