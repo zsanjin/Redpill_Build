@@ -2,7 +2,7 @@ name: Build DS918+ 7.1.0-42661
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       clean_cache:
@@ -74,7 +74,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: Synoboot
-          name: Synoboot Build ${{steps.date.outputs.today}}
+          name: Synoboot ${{matrix.version}} Build ${{steps.date.outputs.today}}
           body: ${{steps.desc.outputs.description}}
           draft: false
           prerelease: false
