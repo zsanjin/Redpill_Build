@@ -37,12 +37,7 @@
     "HddHotplug": "",
     "support_led_brightness_adjustment": "",
     "support_leds_lp3943": "",
-    "buzzeroffen": "0xffff",
-    "rss_server": "http://example.com/null.xml",
-    "rss_server_ssl": "https://example.com/null.xml",
-    "small_info_path": "https://example.com/null",
-    "updateurl": "http://example.com/",
-    "myds_region_api_base_url": "https://example.com"
+    "buzzeroffen": "0xffff"
   },
 
   "grub": {
