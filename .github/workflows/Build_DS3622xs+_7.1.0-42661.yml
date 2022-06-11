@@ -50,7 +50,7 @@ jobs:
       - name: 解密PAT文件
         run: |
           cd /home/runner/redpill-load/cache
-          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/DS3622xs%2B_7.1.0-42661.sh -O /home/runner/redpill-load/cache/UNPACK.sh
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/${{matrix.platform}}_${{matrix.version}}.sh -O /home/runner/redpill-load/cache/UNPACK.sh
           chmod +x /home/runner/redpill-load/cache/UNPACK.sh
           /home/runner/redpill-load/cache/UNPACK.sh
           sudo rm -rf /home/runner/redpill-load/cache/UNPACK.sh
