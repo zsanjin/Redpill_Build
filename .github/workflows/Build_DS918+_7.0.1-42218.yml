@@ -1,4 +1,4 @@
-name: Build DS918+
+name: Build DS918+ 7.0.1-42218
 
 on:
   schedule:
