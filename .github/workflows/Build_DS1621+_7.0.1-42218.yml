@@ -60,7 +60,7 @@ jobs:
       - name: 上传引导镜像到 Github Releases
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: Synoboot
+          tag_name: Synoboot Build ${{steps.date.outputs.today}}
           name: Synoboot Build ${{steps.date.outputs.today}}
           body: ${{steps.desc.outputs.description}}
           draft: false
