@@ -15,7 +15,7 @@ ls -lh ./
 sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
 cd pat
 tar -czvf archive.tar.gz ./ --warning=no-file-changed
-mv archive.tar.gz ../ds3622xsp_42661.pat
+mv archive.tar.gz ../ds918p_42661.pat
 cd ../
 sudo rm -rf ds.pat oldpat.tar.gz pat synoesp
 sha256sum ds918p_42661.pat
