@@ -1,4 +1,4 @@
-name: Build DVA3221
+name: Build DVA3221 7.0.1-42218
 
 on:
   schedule:
