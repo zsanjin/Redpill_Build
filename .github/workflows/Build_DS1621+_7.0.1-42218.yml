@@ -1,4 +1,4 @@
-name: Build DS1621+
+name: Build DS1621+ 7.0.1-42661
 
 on:
   schedule:
