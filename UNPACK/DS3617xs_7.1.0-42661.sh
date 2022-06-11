@@ -18,4 +18,4 @@ tar -czvf archive.tar.gz ./ --warning=no-file-changed
 mv archive.tar.gz ../ds3622xsp_42661.pat
 cd ../
 sudo rm -rf ds.pat oldpat.tar.gz pat synoesp
-sha256sum ds3622xsp_42661.pat
+sha256sum ds3617xs_42661.pat
