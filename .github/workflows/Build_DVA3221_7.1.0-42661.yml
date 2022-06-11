@@ -55,7 +55,7 @@ jobs:
           /home/runner/redpill-load/cache/UNPACK.sh
           sudo rm -rf /home/runner/redpill-load/cache/UNPACK.sh
           sha256sum /home/runner/redpill-load/cache/* > /home/runner/redpill-load/cache/check.sha256
-          sed -i s/8076950fdad2ca58ea9b91a12584b9262830fe627794a0c4fc5861f819095261/$(awk '{print $1}' "/home/runner/redpill-load/cache/check.sha256")/g /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
+          sed -i s/ed3207db40b7bac4d96411378558193b7747ebe88f0fc9c26c59c0b5c688c359/$(awk '{print $1}' "/home/runner/redpill-load/cache/check.sha256")/g /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
           sudo rm -rf /home/runner/redpill-load/cache/check.sha256
           
       - name: 添加扩展驱动
