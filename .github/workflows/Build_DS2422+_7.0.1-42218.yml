@@ -1,4 +1,4 @@
-name: Build DS2422+
+name: Build DS2422+ 7.0.1-42218
 
 on:
   schedule:
