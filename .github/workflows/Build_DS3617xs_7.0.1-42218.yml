@@ -68,9 +68,9 @@ jobs:
           files: |
             /home/runner/redpill-load/images/*.img
           
-      - name: 上传引导镜像到 Github Actions
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{matrix.platform}} ${{matrix.version}}
-          path: /home/runner/redpill-load/images/*.img
-          if-no-files-found: error
+#      - name: 上传引导镜像到 Github Actions
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: ${{matrix.platform}} ${{matrix.version}}
+#          path: /home/runner/redpill-load/images/*.img
+#          if-no-files-found: error
