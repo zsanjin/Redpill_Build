@@ -1,0 +1,89 @@
+name: Build DS3615xs 7.1.0-42661
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: 'Clear caches'
+        required: false
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 编译 "${{matrix.platform}} ${{matrix.version}}"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: DS3615xs
+            version: 7.1.0-42661
+
+    steps:
+      - name: 检出项目文件
+        uses: actions/checkout@v3
+        
+      - name: 获取当前时间
+        id: date
+        run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
+        
+      - name: 获取项目描述
+        id: desc
+        run: |
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/README.MD -O /home/runner/desc.txt
+          echo "::set-output name=description::$(cat /home/runner/desc.txt)"
+        
+      - name: 环境准备
+        run: |
+          sudo apt update
+          sudo apt-get install -y curl bspatch jq git
+          git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds3615xs_user_config.json -O /home/runner/redpill-load/ds3615xs_user_config.json
+          wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-3.10.108.tgz
+          tar zxvf redpill-3.10.108.tgz -C ./
+          mv ./redpill.ko /home/runner/redpill-load/ext/rp-lkm/redpill-linux-v3.10.108.ko
+          rm -rf /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/config/${{matrix.platform}}_config.json -O /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
+          
+      - name: 解密PAT文件
+        run: |
+          cd /home/runner/redpill-load/cache
+          wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/UNPACK/${{matrix.platform}}_${{matrix.version}}.sh -O /home/runner/redpill-load/cache/UNPACK.sh
+          chmod +x /home/runner/redpill-load/cache/UNPACK.sh
+          /home/runner/redpill-load/cache/UNPACK.sh
+          sudo rm -rf /home/runner/redpill-load/cache/UNPACK.sh
+          sha256sum /home/runner/redpill-load/cache/* > /home/runner/redpill-load/cache/check.sha256
+          sed -i s/0a5a243109098587569ab4153923f30025419740fb07d0ea856b06917247ab5c/$(awk '{print $1}' "/home/runner/redpill-load/cache/check.sha256")/g /home/runner/redpill-load/config/${{matrix.platform}}/${{matrix.version}}/config.json
+          sudo rm -rf /home/runner/redpill-load/cache/check.sha256
+          
+      - name: 添加扩展驱动
+        run: |
+          cd /home/runner/redpill-load 
+          ./ext-manager.sh add 'https://github.com/jumkey/redpill-load/raw/develop/redpill-misc/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
+          ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
+          
+      - name: 编译引导
+        run: |
+          cd /home/runner/redpill-load
+          sudo BRP_JUN_MOD=1 BRP_DEBUG=1 BRP_USER_CFG=ds3615xs_user_config.json ./build-loader.sh '${{matrix.platform}}' '${{matrix.version}}'
+          
+      - name: 上传引导镜像到 Github Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: Synoboot
+          name: Synoboot Build ${{steps.date.outputs.today}}
+          body: ${{steps.desc.outputs.description}}
+          draft: false
+          prerelease: false
+          files: |
+            /home/runner/redpill-load/images/*.img
+          
+#      - name: 上传引导镜像到 Github Actions
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: ${{matrix.platform}} ${{matrix.version}}
+#          path: /home/runner/redpill-load/images/*.img
+#          if-no-files-found: error
