@@ -39,7 +39,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt-get install -y curl bspatch jq git
-          git clone https://github.com/jumkey/redpill-load.git /home/runner/redpill-load
+          git clone https://github.com/pocopico/redpill-load.git /home/runner/redpill-load
           wget https://raw.githubusercontent.com/Online24Hours/Redpill_Build/main/ds3615xs_user_config.json -O /home/runner/redpill-load/ds3615xs_user_config.json
           wget https://raw.githubusercontent.com/pocopico/rp-ext/main/redpill/releases/redpill-3.10.108.tgz
           tar zxvf redpill-3.10.108.tgz -C ./
