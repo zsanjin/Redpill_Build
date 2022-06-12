@@ -63,6 +63,7 @@ jobs:
           cd /home/runner/redpill-load 
           ./ext-manager.sh add 'https://github.com/pocopico/redpill-load/raw/develop/redpill-acpid/rpext-index.json'
           ./ext-manager.sh add 'https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json'
+          ./ext-manager.sh add 'https://github.com/pocopico/rp-ext/blob/main/redpill-dtb-static/rpext-index.json'
           
       - name: 编译引导
         run: |
