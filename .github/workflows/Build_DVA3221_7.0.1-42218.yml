@@ -72,6 +72,13 @@ jobs:
           prerelease: false
           files: |
             /home/runner/redpill-load/images/*.img
+            
+      - uses: dev-drprasad/delete-older-releases@v0.2.0
+        with:
+          repo: Online24Hours/Redpill_Build
+          keep_latest: 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 #      - name: 上传引导镜像到 Github Actions
 #        uses: actions/upload-artifact@v3
