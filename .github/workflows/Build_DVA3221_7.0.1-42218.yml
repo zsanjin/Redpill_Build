@@ -78,7 +78,6 @@ jobs:
         with:
           repo: Online24Hours/Redpill_Build
           keep_latest: 1
-          delete_tag_pattern: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
