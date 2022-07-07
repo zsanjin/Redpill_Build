@@ -2,7 +2,7 @@ name: Build DS918+ 7.0.1-42218
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
     inputs:
       clean_cache:
