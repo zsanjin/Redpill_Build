@@ -72,11 +72,13 @@ jobs:
           prerelease: false
           files: |
             /home/runner/redpill-load/images/*.img
-            
-      - uses: dev-drprasad/delete-older-releases@v0.2.0
+
+      - name: 删除旧的 Release 项目
+        uses: dev-drprasad/delete-older-releases@v0.2.0
         with:
           repo: Online24Hours/Redpill_Build
           keep_latest: 1
+          delete_tag_pattern: ${{matrix.version}}_Build_${{steps.date.outputs.today}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
