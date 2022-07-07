@@ -3,11 +3,23 @@ name: 删除所有 Release 项目
 on:
   schedule:
     - cron: '30 16 * * *'
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: 'Clear caches'
+        required: false
+        type: boolean
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Delete Older Releases
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: dev-drprasad/delete-older-releases
+            version: 0.2.0
     
     steps:
       - name: Delete Older Releases
