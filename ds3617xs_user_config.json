@@ -7,11 +7,16 @@
 	"mac2": "001132356FCB",
 	"mac3": "001132356FCC",
 	"mac4": "001132356FCD",
-	"netif_num": 8
+	"netif_num": 7
     },
-	"synoinfo": {
-	"maxlanport": "8"
+    "synoinfo": {
+	"internalportcfg": "0xffff",
+	"maxlanport": "7",
+	"maxdisks": "36",
+	"support_bde_internal_10g": "no",
+	"support_disk_compatibility": "no",
+	"support_memory_compatibility": "no"
     },
-	"ramdisk_copy": {},
-	"extensions": []
+    "ramdisk_copy": {},
+    "extensions": []
 }
