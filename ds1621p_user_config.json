@@ -3,10 +3,10 @@
         "pid": "0x0001",
         "vid": "0x46f4",
         "sn": "2080S7RE6B55K",
-        "mac1": "001132C97DDA",
-	"mac2": "001132C97DDB",
-	"mac3": "001132C97DDC",
-	"mac4": "001132C97DDD",
+        "mac1": "001132C97DD1",
+	"mac2": "001132C97DD2",
+	"mac3": "001132C97DD3",
+	"mac4": "001132C97DD4",
 	"netif_num": 7
     },
     "synoinfo": {
