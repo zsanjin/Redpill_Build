@@ -2,11 +2,15 @@
     "extra_cmdline": {
         "pid": "0x0001",
         "vid": "0x46f4",
-        "sn": "2030SQRVLHLZK",
-        "mac1": "0011329F66BA",
-	"mac2": "0011329F66BB",
-	"mac3": "0011329F66BC",
-	"mac4": "0011329F66BD",
+        "sn": "20150SQRW1ZAHH",
+        "mac1": "001132FA6CD1",
+	"mac2": "001132FA6CD2",
+	"mac3": "001132FA6CD3",
+	"mac4": "001132FA6CD4",
+	"mac5": "001132FA6CD5",
+	"mac6": "001132FA6CD6",
+	"mac7": "001132FA6CD7",
+	"mac8": "001132FA6CD8",
 	"netif_num": 8
     },
 	"synoinfo": {
