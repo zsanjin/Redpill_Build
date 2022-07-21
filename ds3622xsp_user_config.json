@@ -16,6 +16,6 @@
     "synoinfo": {
 	"maxlanport": "8"
     },
-	"ramdisk_copy": {},
-	"extensions": []
+    "ramdisk_copy": {},
+    "extensions": []
 }
