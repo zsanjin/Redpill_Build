@@ -8,11 +8,11 @@
 	"mac3": "001132FA6CD5",
 	"mac4": "001132FA6CD6",
 	"mac5": "001132FA6CD7",
-	"netif_num": 8
+	"netif_num": 7
     },
     "synoinfo": {
 	"internalportcfg": "0xffff",
-	"maxlanport": "8",
+	"maxlanport": "7",
 	"maxdisks": "36",
 	"support_bde_internal_10g": "no",
 	"support_disk_compatibility": "no",
