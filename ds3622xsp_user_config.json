@@ -13,7 +13,7 @@
 	"mac8": "001132FA6CD8",
 	"netif_num": 8
     },
-	"synoinfo": {
+    "synoinfo": {
 	"maxlanport": "8"
     },
 	"ramdisk_copy": {},
