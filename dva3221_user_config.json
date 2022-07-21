@@ -3,15 +3,20 @@
         "pid": "0x0001",
         "vid": "0x46f4",
         "sn": "2030SJRS77RHV",
-        "mac1": "001132B76CFA",
-	"mac2": "001132B76CFB",
-	"mac3": "001132B76CFC",
-	"mac4": "001132B76CFD",
-	"netif_num": 8
+        "mac1": "001132B76CF1",
+	"mac2": "001132B76CF2",
+	"mac3": "001132B76CF3",
+	"mac4": "001132B76CF4",
+	"netif_num": 7
     },
-	"synoinfo": {
-	"maxlanport": "8"
+    "synoinfo": {
+	"internalportcfg": "0xffff",
+	"maxlanport": "7",
+	"maxdisks": "32",
+	"support_bde_internal_10g": "no",
+	"support_disk_compatibility": "no",
+	"support_memory_compatibility": "no"
     },
-	"ramdisk_copy": {},
-	"extensions": []
+    "ramdisk_copy": {},
+    "extensions": []
 }
