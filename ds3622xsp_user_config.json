@@ -10,9 +10,14 @@
 	"mac5": "001132FA6CD7",
 	"netif_num": 8
     },
-	"synoinfo": {
-	"maxlanport": "8"
+    "synoinfo": {
+	"internalportcfg": "0xffff",
+	"maxlanport": "8",
+	"maxdisks": "36",
+	"support_bde_internal_10g": "no",
+	"support_disk_compatibility": "no",
+	"support_memory_compatibility": "no"
     },
-	"ramdisk_copy": {},
-	"extensions": []
+    "ramdisk_copy": {},
+    "extensions": []
 }
