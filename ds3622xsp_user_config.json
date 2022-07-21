@@ -3,19 +3,16 @@
         "pid": "0x0001",
         "vid": "0x46f4",
         "sn": "20150SQRW1ZAHH",
-        "mac1": "001132FA6CD1",
-	"mac2": "001132FA6CD2",
-	"mac3": "001132FA6CD3",
-	"mac4": "001132FA6CD4",
-	"mac5": "001132FA6CD5",
-	"mac6": "001132FA6CD6",
-	"mac7": "001132FA6CD7",
-	"mac8": "001132FA6CD8",
+        "mac1": "001132FA6CD3",
+	"mac2": "001132FA6CD4",
+	"mac3": "001132FA6CD5",
+	"mac4": "001132FA6CD6",
+	"mac5": "001132FA6CD7",
 	"netif_num": 8
     },
-    "synoinfo": {
+        "synoinfo": {
 	"maxlanport": "8"
     },
-    "ramdisk_copy": {},
-    "extensions": []
+        "ramdisk_copy": {},
+        "extensions": []
 }
