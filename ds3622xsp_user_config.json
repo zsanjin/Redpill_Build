@@ -12,11 +12,7 @@
     },
     "synoinfo": {
 	"internalportcfg": "0xffff",
-	"maxlanport": "7",
-	"maxdisks": "36",
-	"support_bde_internal_10g": "no",
-	"support_disk_compatibility": "no",
-	"support_memory_compatibility": "no"
+	"maxlanport": "7"
     },
     "ramdisk_copy": {},
     "extensions": []
