@@ -4,14 +4,12 @@
         "vid": "0x46f4",
         "sn": "2040SBRDDF1TV",
         "mac1": "0011323E3871",
-	"mac2": "0011323E3872",
-	"mac3": "0011323E3873",
-	"mac4": "0011323E3874",
-	"netif_num": 7
+	"mac2": "04421A047059",
+	"netif_num": 2
     },
     "synoinfo": {
 	"internalportcfg": "0xffff",
-	"maxlanport": "7"
+	"maxlanport": "2"
     },
     "ramdisk_copy": {},
     "extensions": []
